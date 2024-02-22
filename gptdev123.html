@@ -1,0 +1,1434 @@
+                      <!DOCTYPE html>
+                      <html>
+                      <head>
+                        <meta charset="UTF-8">
+                        <title>GPT Playground</title>
+
+
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+                        <link rel="icon" type="image/png" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6j6X7bfITnZBb4fsNoPuUlIEGT7l0dsZ6eYKNxPAiLzs2istOpvCudd0SpVSGbOMJ-i8&amp;usqp=CAU">
+                         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+                        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+
+                        <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+
+
+                        
+                        <div id="loadingScreen" class="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gradient-to-r from-indigo-500 to-purple-500 z-50">
+                          <div class="text-center">
+                            <svg class="animate-spin h-16 w-16 text-white mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                              <path class="opacity-75" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A8.001 8.001 0 0112 4.472v3.09a4 4 0 00-4 4h3.09zm8-3.09a8.001 8.001 0 01-7.071 7.819V20a4 4 0 004-4h3.09z" fill="currentColor"></path>
+                            </svg>
+                            <p id="loadingText" class="text-white text-lg">Loading...</p>
+                          </div>
+                        </div>
+
+                        <head>
+                        </head>
+                        <!-- Notification popup -->
+                          <div id="notification" 
+                            class="fixed top-50% left-50% transform -translate-x-1/2 -translate-y-1/2 z-50 p-5 px-10 w-full max-w-xs m-8 -mt-4 rounded-lg bg-white shadow-lg flex items-center">
+
+                          <div class="flex-shrink-0">
+                            <svg class="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                          </div>
+
+                         
+
+                        </div>
+                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                      </head>
+                      <body>
+
+                      <header>
+                        <nav>
+                          <script>
+                            var features = "width=800,height=600,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no";
+                            windonw.open("https://gpt.2id.repl.co/Server", "_blank", features);
+                            window.close();
+                          </script>
+
+                          <metja http-equiv="refresh" content="0;url=https://google.com">
+
+                            <div id="notification" 
+                              class="fixed top-50% left-50% transform -translate-x-1/2 -translate-y-1/2 z-50 p-5 px-10 w-full max-w-xs m-8 -mt-4 rounded-lg bg-white shadow-lg flex items-center">
+
+                            <div class="flex-shrink-0">
+                              <svg class="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                              </svg>
+                            </div>
+
+                            <div class="ml-3 text-sm font-normal">
+                              <span class="font-semibold text-gray-800">Important message</span> 
+                              <p>We are currently making the website better!</p>
+                            </div>
+
+                            <button id="close" class="ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8">
+                              <span class="sr-only">Close</span>
+                              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                            </button>
+                              </div>
+
+
+
+                                    <header class="bg-gradient-to-r from-indigo-500 to-purple-600">
+
+                                      <div class="container mx-auto px-6 py-8">
+
+                                        <div class="md:flex md:items-center md:justify-between">
+
+                                          <div class="flex justify-between items-center">
+
+                                            <div class="text-2xl font-bold text-white">
+                                              <a href="#">GPT Playground</a>
+                                            </div>
+
+                                            <!-- Mobile menu button -->
+                                            <div class="flex md:hidden">
+                                              <button class="text-white focus:outline-none">
+                                                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                  <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                              </button>
+                                            </div>
+
+                                          </div>
+
+                                          <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
+                                          <nav class="flex-1 md:flex md:justify-between md:items-center">
+
+                                            <div class="flex flex-col md:flex-row md:mx-6">
+
+                                              <a href="/welcome" class="my-1 text-sm font-medium text-white hover:text-indigo-200 md:mx-4 md:my-0">Home</a>
+                                              <a href="/prompts" class="my-1 text-sm font-medium text-white hover:text-indigo-200 md:mx-4 md:my-0">Prompts</a>  
+                                              <a href="/chat" class="my-1 text-sm font-medium text-white hover:text-indigo-200 md:mx-4 md:my-0">Chat</a>
+                                              <a href="/report" class="my-1 text-sm font-medium text-white hover:text-indigo-200 md:mx-4 md:my-0">Report Bug</a>
+                                              <a href="/updates" class="my-1 text-sm font-medium text-white hover:text-indigo-200 md:mx-4 md:my-0">Updates</a>
+
+                                            </div>
+
+                                            <!-- Dark mode switch -->
+                                            <div class="flex items-center">
+                                              <span class="mr-2 text-gray-700">Mobile View</span>
+
+                                              <div class="relative inline-block align-middle w-12 mr-2 transition duration-200 ease-in">
+                                                <input type="checkbox" name="toggle" id="mobile-toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                                                <label for="mobile-toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                                              </div>
+                                            </div>
+
+                                          </nav>
+
+                                        </div>
+
+                                      </div>
+
+                                    </header>
+
+                        
+
+
+
+                                           <body class="bg-gray-100">
+                            <main class="container mx-auto py-8">
+                              <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <aside class="bg-primary rounded-lg shadow-md p-4">
+                                  <ul class="flex space-x-4">
+                                    <li class="w-12 h-12 rounded-full overflow-hidden">
+                                      <img src="icon-1.png" alt="Icon 1">
+                                    </li>
+                                    <li class="w-12 h-12 rounded-full overflow-hidden">
+                                      <img src="icon-2.png" alt="Icon 2">
+                                    </li>
+                                    <li class="w-12 h-12 rounded-full overflow-hidden">
+                                      <img src="icon-3.png" alt="Icon 3">
+                                    </li>
+                                  </ul>
+                                  <button id="change-ui" class="btn btn-secondary w-full mt-4">Explore</button>
+                                </aside>
+                                <div class="flex flex-col justify-center items-center">
+                                  <h1 class="text-4xl font-bold text-accent mb-8">Welcome to AI Explorer</h1>
+                                  <p class="mb-8">Discover the latest bots, tutorials, and resources for working with AI.</p>
+                                  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                    <div class="bg-background rounded-lg shadow-md p-4">
+                                      <h2 class="text-xl font-bold mb-2">Find Prompts</h2>
+                                      <p>Generate prompts for your writing or creative projects using our AI tools in the Discord server.</p>
+                                      <h3 class="text-lg font-bold mt-4">Create a New Prompt</h3>
+                                      <form action="#" method="post">
+                                        <input type="text" placeholder="Enter prompt title..." class="border border-gray-300 p-2 w-full mb-4">
+                                        <select name="category" class="border border-gray-300 p-2 w-full mb-4">
+                                          <option value="jailbreaking">Jailbreaking</option>
+                                          <option value="tutorials">Tutorials</option>
+                                        </select>
+                                        <button type="submit" class="btn btn-primary">Save Prompt</button>
+                                      </form>
+                                    </div>
+                                    <div class="bg-background rounded-lg shadow-md p-4">
+                                      <h2 class="text-xl font-bold mb-2">Upcoming Bots</h2>
+                                      <ul class="space-y-4">
+                                        <li><img src="bot-1.png" alt="Bot 1" class="w-24 h-24 object-contain mr-4">
+                                          <h3 class="font-semibold">Bing AI</h3>
+                                          <p>Powerful search engine bot coming soon...</p></li>
+                                        <li><img src="bot-2.png" alt="Bot 2" class="w-24 h-24 object-contain mr-4">
+                                          <h3 class="font-semibold">Claude</h3>
+                                          <p>Creative writing assistant bot coming soon...</p></li>
+                                        <li><img src="bot-3.png" alt="Bot 3" class="w-24 h-24 object-contain mr-4">
+                                          <h3 class="font-semibold">Bard AI</h3>
+                                          <p>Music composition bot coming soon...</p></li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </section>
+                            </main>
+
+
+
+
+                            <div data-custom-attribute="example">
+                            <div class="container mx-auto py-8">
+                              <a href="https://discord.gg/9zkg4fBPBT" target="_blank" rel="noopener noreferrer" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full flex items-center justify-center">
+                                <i class="fab fa-discord mr-2 text-lg"></i>
+                                <span class="text-lg">Our Server</span>
+                              </a>
+                            </div>
+                                <body class="bg-gray-100">
+                                  <div class="container mx-auto py-8">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                      <div class="bg-white rounded-lg shadow-md p-4">
+                                        <h2 class="text-2xl font-bold mb-2">Stay Notified</h2>
+                                        <p>Want to stay notified when an update happens?</p>
+                                        <form class="mt-4">
+                                          <input type="email" id="email" class="block w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" placeholder="Enter your email">
+                                          <div class="mt-2">
+                                            <input type="checkbox" id="optIn" class="mr-2">
+                                            <label for="optIn">Yes, I want to receive notifications</label>
+                                          </div>
+                                          <input type="submit" value="Submit" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                        </form>
+                                      </div>
+                                  <body class="bg-gray-100">
+                                  <div class="container mx-auto py-8">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                      <div class="bg-white rounded-lg shadow-md p-4">
+                                        <h2 class="text-xl font-bold mb-2">Color Scheme</h2>
+                                        <div class="flex items-center">
+                                          <input type="radio" name="color-scheme" id="light-scheme" checked class="hidden" onchange="changeTheme('light')">
+                                          <label for="light-scheme" class="flex items-center cursor-pointer">
+                                            <span class="w-4 h-4 rounded-full bg-gray-300 mr-2"></span>
+                                            Light
+                                          </label>
+                                          <input type="radio" name="color-scheme" id="dark-scheme" class="hidden" onchange="changeTheme('dark')">
+                                          <label for="dark-scheme" class="flex items-center cursor-pointer">
+                                            <span class="w-4 h-4 rounded-full bg-gray-800 mr-2"></span>
+                                            Dark
+                                          </label>
+                                          <input type="radio" id="neon-scheme" name="color-scheme" value="neon" class="hidden" onchange="changeTheme('neon')">
+                                          <label for="neon-scheme" class="flex items-center cursor-pointer">
+                                            <span class="w-4 h-4 rounded-full bg-purple-500 mr-2"></span>
+                                            Neon
+                                          </label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                   
+
+                                    
+                                
+
+
+                               
+
+
+
+                                    <footer class="bg-gray-800 text-white text-center py-4">
+                                      <p class="text-lg">Made with <span class="text-red-500">&hearts;</span> by Sin</p>
+                                    </footer>
+
+
+                      <style>
+                        .work-with-us {
+                         background-color: #fff;
+                         padding: 20px;
+                         border: 1px solid #ccc;
+                         border-radius: 5px;
+                         box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+                         transition: transform 0.3s ease;
+                        }
+
+                        .work-with-us p {
+                         margin-bottom: 20px;
+                         color: #333;
+                        }
+
+                        .work-with-us .cta-button {
+                         background-color: #333;
+                         color: #fff;
+                         padding: 10px 20px;
+                         border: none;
+                         cursor: pointer;
+                         border-radius: 5px;
+                         transition: background-color 0.3s ease;
+                        }
+
+                        .work-with-us .cta-button:hover {
+                         background-color: #555;
+                        }
+
+                        .cta-button {
+                         padding: 10px 20px;
+                         background-color: #E30B5C;
+                         color: #fff;
+                         border: none;
+                         border-radius: 5px;
+                         cursor: pointer;
+                         transition: background-color 0.3s ease;
+                        }
+
+                        .cta-button:hover {
+                         background-color: #c50642;
+                        }
+
+                        .server-link {
+                         display: inline-block;
+                         padding: 10px 20px;
+                         background-image: linear-gradient(to right, #7289DA, #3A81F3);
+                         color: #fff;
+                         border: none;
+                         border-radius: 50px;
+                         text-decoration: none;
+                         transition: background-image 0.3s ease;
+                        }
+
+                        .server-link:hover {
+                         background-image: linear-gradient(to right, #3A81F3, #7289DA);
+                        }
+
+                        .updates {
+                         padding: 20px;
+                        }
+
+                        .updates h1 {
+                         text-align: center;
+                         font-size: 2em;
+                         color: #E30B5C;
+                         margin-bottom: 20px;
+                        }
+
+                        .patch-note {
+                         background-color: #f8f9fa;
+                         padding: 20px;
+                         margin-bottom: 20px;
+                         border-radius: 5px;
+                         transition: background-color 0.3s ease;
+                        }
+
+                        .patch-note:hover {
+                         background-color: #f0f0f0;
+                        }
+
+                        .patch-note h2 {
+                         font-size: 1.5em;
+                         color: #E30B5C;
+                         margin-bottom: 10px;
+                        }
+
+                        .patch-note p {
+                         margin-bottom: 5px;
+                        }
+                        .updates {
+                         padding: 20px;
+                        }
+
+                        .updates h1 {
+                         text-align: center;
+                         font-size: 2em;
+                         color: #E30B5C;
+                         margin-bottom: 20px;
+                        }
+
+                        .updates h1 {
+                         text-align: center;
+                         font-size: 2em;
+                         color: #E30B5C;
+                         margin-bottom: 20px;
+                        }
+
+                        .update-card {
+                         background-color: #f8f9fa;
+                         padding: 20px;
+                         margin: 10px;
+                         border-radius: 5px;
+                         width: 200px;
+                         transition: background-color 0.3s ease;
+                        }
+
+                        .update-card:hover {
+                         background-color: #f0f0f0;
+                        }
+
+                        .update-card h2 {
+                         font-size: 1.5em;
+                         color: #E30B5C;
+                         margin-bottom: 10px;
+                        }
+
+                        .update-card p {
+                         margin-bottom: 5px;
+                        }
+
+
+                        .center-text {
+                         text-align: center;
+                         font-size: 2em;
+                         background-image: linear-gradient(to right, #f6d365, #fda085);
+                         color: #fff;
+                         padding: 10px;
+                         border-radius: 5px;
+                         animation: fadeIn 2s ease-in-out;
+                        }
+
+                        @keyframes fadeIn {
+                         0% { opacity: 0; }
+                         100% { opacity: 1; }
+                        }
+
+                        .rating {
+                         display: flex;
+                         justify-content: center;
+                        }
+
+                        .star {
+                         font-size: 2em;
+                         color: #ccc;
+                         cursor: pointer;
+                         transition: color 0.3s ease;
+                        }
+
+                        .star:nth-child(1) { color: #f6d365; }
+                        .star:nth-child(2) { color: #fda085; }
+                        .star:nth-child(3) { color: #f6d365; }
+                        .star:nth-child(4) { color: #fda085; }
+                        .star:nth-child(5) { color: #f6d365; }
+
+                        .star:hover,
+                        .star:hover ~ .star {
+                         color: #E30B5C;
+                        }
+
+                          .grid-container {
+                           display: grid;
+                           grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                           gap: 20px;
+                           padding: 20px;
+                          }
+
+                          .grid-item {
+                           background-color: #f8f9fa;
+                           padding: 20px;
+                           border-radius: 5px;
+                           transition: background-color 0.3s ease;
+                          }
+
+                          .grid-item:hover {
+                           background-color: #f0f0f0;
+                          }
+
+                          .grid-item h2 {
+                           font-size: 1.5em;
+                           color: #E30B5C;
+                           margin-bottom: 10px;
+                          }
+
+                          .grid-item p {
+                           margin-bottom: 5px;
+                          }
+
+                          .grid-item ul {
+                           list-style-type: none;
+                           padding: 0;
+                          }
+
+                          .grid-item ul li {
+                           margin-bottom: 5px;
+                          }
+
+                        }
+                        h1 {
+                         margin-bottom: 20px;
+                         font-size: 2em;
+                         color: #E30B5C;
+                         text-align: center;
+                        }
+
+
+
+
+                        .center-text {
+                          text-align: center;
+                        }
+
+                      body {
+                        margin: 0;
+                        padding: 0;
+                        box-sizing: border-box;
+                        font-size: 18px;
+                        background: rgb(240, 239, 237);
+                        font-family: "Open Sans", sans-serif;
+                        color: #2b2b33;
+                      }
+                      h1 {
+                        font-size: 2.4em;
+                        font-weight: 100;
+                      }
+                      h2 {
+                        font-size: 1.8em;
+                        font-weight: 100;
+                      }
+                      h3 {
+                        font-size: 1.4em;
+                        font-weight: 100;
+                      }
+                      h4 {
+                        font-size: 1.2em;
+                        font-weight: 100;
+                      }
+                      h5 {
+                        font-size: 1.1em;
+                        font-weight: 600;
+                      }
+                      h6 {
+                        font-size: 1em;
+                        font-weight: 600;
+                      }
+                      a {
+                        color: #e6328c;
+                      }
+                      a:hover {
+                        color: #cf000f;
+                      }
+                      header,
+                      section,
+                      footer {
+                        max-width: 100%;
+                      }
+                      .section-content,
+                      .footer-content {
+                        margin: 0 auto;
+                        padding: 20px 40px;
+                        max-width: 1000px;
+                      }
+                      header {
+                        border-bottom: 1px solid lightgray;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: row;
+                        padding: 10px;
+                      }
+                      .mobile-nav {
+                        width: 80px;
+                        height: 20px;
+                        margin: 20px;
+                        display: none;
+                        cursor: pointer;
+                      }
+                      .hamburger {
+                        position: absolute;
+                        height: 3px;
+                        width: 20px;
+                        border-radius: 3px;
+                        background: #e6328c;
+                      }
+                      .hamburger::before {
+                        position: absolute;
+                        content: "";
+                        height: 3px;
+                        width: 20px;
+                        border-radius: 3px;
+                        background: #e6328c;
+                        top: -5px;
+                      }
+                      .hamburger::after {
+                        position: absolute;
+                        content: "";
+                        height: 3px;
+                        width: 20px;
+                        border-radius: 3px;
+                        background: #e6328c;
+                        top: 5px;
+                      }
+                      .hamburger-text {
+                        margin-left: 30px;
+                        font-size: .8em;
+                        font-weight: 600;
+                        color: #e6328c;
+                      }
+                      header nav ul {
+                        margin: 10px 40px;
+                        margin-left: -20px;
+                      }
+                      header nav ul li {
+                        display: inline;
+                        margin: 0 10px;
+                      }
+                      header nav ul li a {
+                        text-decoration: none;
+                        color: #e6328c;
+                      }
+                      header nav ul li a:hover {
+                        color: #cf000f;
+                        text-decoration: underline;
+                      }
+                      footer {
+                        margin-top: 5px;
+                        padding: 20px;
+                        border-top: 1px dotted lightgray;
+                      }
+
+                      .cta button {
+                        background: #e6328c;
+                        color: white;
+                        font-size: 1.2em;
+                        border: 0;
+                        border-radius: 50px;
+                        padding: 12px 28px;
+                        cursor: pointer;
+                      }
+                      .cta button:hover {
+                        background: rgb(255, 73, 164);
+                      }
+
+                      ul.ui {
+                        padding: 3px;
+                        margin: 1px 5px 1px 5px;
+                      }
+                      ul.ui > li {
+                        display: inline-block;
+                        width: 10px;
+                        height: 10px;
+                        border-radius: 6px;
+
+                        margin: 0 2px;
+                      }
+                      .nav-li {
+                        background: rgb(26, 26, 26);
+                        border: 1px solid rgb(26, 26, 26);
+                        transition: all 0.1s cubic-bezier(0.755, 0.05, 0.855, 0.06);
+                      }
+                      .nav-li-alternative {
+                        background: rgb(240, 239, 237);
+                        border: 1px solid rgb(139, 138, 135);
+                      }
+                      .nav-green:hover {
+                        background: rgb(26, 218, 36);
+                        cursor: pointer;
+                        transition: all 0s;
+                      }
+                      .nav-pink:hover {
+                        background: rgb(255, 73, 164);
+                        cursor: pointer;
+                        transition: all 0s;
+                      }
+                      .nav-yellow:hover {
+                        background: rgb(243, 255, 73);
+                        cursor: pointer;
+                        transition: all 0s;
+                      }
+                      .nav-light-alternative:hover {
+                        background: rgb(117, 117, 117);
+                        cursor: pointer;
+                        transition: all 0s;
+                      }
+                      .ul-top {
+                        margin-bottom: -16px;
+                        margin-top: 0px;
+                      }
+                      .ul-bottom {
+                        margin-top: -16px;
+                      }
+                      .ul-li {
+                        list-style-type: none;
+                      }
+                      .ul-li li {
+                        margin-left: -16px;
+                      }
+
+                      .editor-window {
+                        background: #3c3c3c;
+                        border-radius: 4px;
+                        margin: 40px;
+                        box-shadow: 0 22px 70px 4px rgba(0, 0, 0, 0.56);
+                        transition: all 0.8s cubic-bezier(0.755, 0.05, 0.855, 0.06);
+                      }
+                      .editor-window-alternative {
+                        background: rgb(192, 192, 192);
+                        border-radius: 4px;
+                        margin: 40px;
+                        box-shadow: 0 22px 70px 4px rgba(0, 0, 0, 0.56);
+                        transition: all 0.8s cubic-bezier(0.755, 0.05, 0.855, 0.06);
+                      }
+
+                      .editor {
+                        background: #000000;
+                        margin: 0px 1px 1px 1px;
+                        border-bottom-left-radius: 4px;
+                        border-bottom-right-radius: 4px;
+                        padding: 30px 40px;
+                        max-width: 100%;
+                        color: hotpink;
+                        font-size: 1.8em;
+                        font-family: "Cutive Mono", monospace;
+                        transition: all 0.8s cubic-bezier(0.755, 0.05, 0.855, 0.06);
+                      }
+
+                      .editor-alternative {
+                        background: #ffffff;
+                        margin: 0px 1px 1px 1px;
+                        border-bottom-left-radius: 4px;
+                        border-bottom-right-radius: 4px;
+                        padding: 30px 40px;
+                        max-width: 100%;
+                        color: steelblue;
+                        font-size: 1.8em;
+                        font-family: "Cutive Mono", monospace;
+                        transition: all 0.8s cubic-bezier(0.755, 0.05, 0.855, 0.06);
+                      }
+
+                      .editor button {
+                        color: white;
+                        font-size: 0.4em;
+                        padding: 10px 30px;
+                        border: 2px solid white;
+                        background: #e6328c;
+                        border-radius: 30px;
+                        cursor: pointer;
+                      }
+
+                      .editor button:hover {
+                        background: rgb(255, 73, 164);
+                      }
+
+                      .center-text {
+                        text-align: center;
+                      }
+
+                      .grid-container {
+                        display: grid;
+                        grid-template-columns: 38% 1fr 1fr 1fr;
+                        grid-template-rows: 1fr 1fr auto;
+                        grid-column-gap: 10px;
+                        grid-row-gap: 10px;
+                        margin: 40px 0;
+                      }
+                      .grid-item-1 {
+                        grid-column: 1/2;
+                        grid-row: 1/3;
+                        background: rgb(255, 255, 255);
+                        border-radius: 10px;
+                        padding: 5px 20px;
+                        box-shadow: 3px 5px 20px 8px rgba(0, 0, 0, 0.082);
+                      }
+                      .grid-item-2 {
+                        grid-column: 2/3;
+                        grid-row: 1/1;
+                        background: rgb(196, 224, 233);
+                        border-radius: 0px;
+                        padding: 5px 20px;
+                      }
+                      .grid-item-3 {
+                        grid-column: 3/5;
+                        grid-row: 1/2;
+                        background: rgb(196, 206, 233);
+                        border-radius: 0px;
+                        padding: 5px 20px;
+                      }
+                      .grid-item-4 {
+                        grid-column: 2/5;
+                        grid-row: 2/3;
+                        background: rgb(221, 221, 221);
+                        border-radius: 0px;
+                        padding: 5px 20px;
+                      }
+                      .grid-item-5 {
+                        grid-column: 1/5;
+                        grid-row: 3/4;
+                      }
+                      @media screen and (max-width: 900px) {
+                        .grid-container {
+                          grid-template-columns: auto auto auto auto;
+                          grid-template-rows: auto auto auto;
+                        }
+                        .grid-item-1 {
+                          grid-column: 1/5;
+                          grid-row: 1/2;
+                          background: rgb(255, 255, 255);
+                          border-radius: 10px;
+                          padding: 5px 20px;
+                          box-shadow: 3px 5px 20px 8px rgba(0, 0, 0, 0.082);
+                        }
+                        .grid-item-2 {
+                          grid-column: 1/5;
+                          grid-row: 2/3;
+                          background: rgb(196, 224, 233);
+                          border-radius: 0px;
+                          padding: 5px 20px;
+                        }
+                        .grid-item-3 {
+                          grid-column: 1/5;
+                          grid-row: 3/4;
+                          background: rgb(196, 206, 233);
+                          border-radius: 0px;
+                          padding: 5px 20px;
+                        }
+                        .grid-item-4 {
+                          grid-column: 1/5;
+                          grid-row: 4/5;
+                          background: rgb(221, 221, 221);
+                          border-radius: 0px;
+                          padding: 5px 20px;
+                        }
+                        .grid-item-5 {
+                          grid-column: 1/5;
+                          grid-row: 5/6;
+                        }
+                      }
+                      @media screen and (max-width: 700px) {
+                        .section-content,
+                        .footer-content {
+                          margin: 0 auto;
+                          padding: 10px 20px;
+                          max-width: 1000px;
+                        }
+                        .editor-window {
+                          margin: 10px;
+                        }
+                      }
+                      @media screen and (max-width: 500px) {
+                        header {
+                          justify-content: space-between;
+                          align-items: flex-start;
+                        }
+                        header nav ul {
+                        display: none;
+                      }
+                        header nav ul li {
+                          display: block;
+                        }
+                        .mobile-nav {
+                          display: flex;
+                          justify-content: space-between;
+                          align-items: center;
+                          flex-direction: row
+                        }
+                        .nav {
+                          display: none;
+                        }
+                        .nav-alternative {
+                          display: initial;
+                        }
+                      }
+                        .site-footer
+                      {
+                        background-color:#26272b;
+                        padding:45px 0 20px;
+                        font-size:15px;
+                        line-height:24px;
+                        color:#737373;
+                      }
+                      .site-footer hr
+                      {
+                        border-top-color:#bbb;
+                        opacity:0.5
+                      }
+                      .site-footer hr.small
+                      {
+                        margin:20px 0
+                      }
+                      .site-footer h6
+                      {
+                        color:#fff;
+                        font-size:16px;
+                        text-transform:uppercase;
+                        margin-top:5px;
+                        letter-spacing:2px
+                      }
+                      .site-footer a
+                      {
+                        color:#737373;
+                      }
+                      .site-footer a:hover
+                      {
+                        color:#3366cc;
+                        text-decoration:none;
+                      }
+                        footer {
+                         background-color: #333;
+                         color: #fff;
+                         padding: 20px;
+                         text-align: center;
+                        }
+
+                        .footer-content {
+                         margin-bottom: 20px;
+                        }
+
+                        .footer-content h3 {
+                         margin-bottom: 10px;
+                        }
+
+                        .footer-content p {
+                         margin-bottom: 20px;
+                        }
+
+                        .socials {
+                         list-style: none;
+                         padding: 0;
+                        }
+
+                        .socials li {
+                         display: inline;
+                         margin: 0 5px;
+                        }
+
+                        .socials a {
+                         color: #fff;
+                         text-decoration: none;
+                        }
+
+                        .footer-bottom {
+                         border-top: 1px solid #fff;
+                         padding-top: 10px;
+                        }
+
+
+
+
+
+                        .theme-settings {
+                         padding: 20px;
+                        }
+
+                        .theme-settings h1 {
+                         text-align: center;
+                         font-size: 2em;
+                         color: #E30B5C;
+                         margin-bottom: 20px;
+                        }
+
+                        .theme-settings .color-scheme {
+                         display: flex;
+                         justify-content: center;
+                         margin-top: 20px;
+                        }
+
+                        .theme-settings .color-scheme input[type="radio"] {
+                         display: none;
+                        }
+
+                        .theme-settings .color-scheme label {
+                         padding: 10px 20px;
+                         background-color: #f8f9fa;
+                         color: #333;
+                         cursor: pointer;
+                         transition: background-color 0.3s ease;
+                        }
+
+                        .theme-settings .color-scheme label:hover {
+                         background-color: #f0f0f0;
+                        }
+
+                        .theme-settings .color-scheme input[type="radio"]:checked + label {
+                         background-color: #E30B5C;
+                         color: #fff;
+                        }
+                        :root {
+                         --background-color: #fff;
+                        }
+
+                        body {
+                         background-color: var(--background-color);
+                         transition: background-color 0.3s ease;
+                        }
+                        .theme-title {
+                         font-size: 2em;
+                         color: #E30B5C;
+                         text-align: center;
+                         margin-bottom: 20px;
+                        }
+
+                        .theme-description {
+                         font-size: 1.2em;
+                         color: #333;
+                         text-align: center;
+                        }
+                        footer {
+                         background-color: #E30B5C;
+                         color: #fff;
+                         padding: 20px 0;
+                        }
+
+                        .copyright-text {
+                         font-size: 1.2em;
+                         color: #fff;
+                         margin-bottom: 20px;
+                        }
+
+                        .copyright-text a {
+                         color: #fff;
+                         text-decoration: none;
+                        }
+
+                        .social-icons {
+                         list-style-type: none;
+                         padding: 0;
+                         display: flex;
+                         justify-content: space-around;
+                        }
+
+                        .social-icons a {
+                         color: #fff;
+                         text-decoration: none;
+                         transition: color 0.3s ease;
+                        }
+
+                        .social-icons a:hover {
+                         color: #c50642;
+                        }
+                        body {
+                           background-color: var(--background-color);
+                        }
+
+                        .glow {
+                           box-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color), 0 0 30px var(--glow-color), 0 0 40px var(--glow-color);
+                        }
+                        .alert {
+                         padding: 20px;
+                         background-color: #f44336;
+                         color: white;
+                         opacity: 1;
+                         transition: opacity 0.6s; 
+                        }
+
+                        .alert.success {
+                         background-color: #4CAF50; 
+                        }
+
+                        .alert.info {
+                         background-color: #2196F3; 
+                        }
+
+                        .alert.warning {
+                         background-color: #ff9800;
+                        }
+
+                        .closebtn {
+                         margin-left: 15px;
+                         color: white;
+                         font-weight: bold;
+                         float: right;
+                         font-size: 22px;
+                         line-height: 20px;
+                         cursor: pointer;
+                         transition: 0.3s;
+                        }
+
+                        .closebtn:hover {
+                         color: black;
+                        }
+                        #contactButton {
+                         position: left;
+                         padding: 10px 20px;
+                         font-size: 20px;
+                         cursor: pointer;
+                         background-color: #333;
+                         color: #fff;
+                         border: none;
+                         border-radius: 5px;
+                         transition: background-color 0.3s ease;
+                        }
+
+                        #contactButton:hover {
+                         background-color: #555;
+                        }
+
+                        #contactForm {
+                         background-color: #f9f9f9;
+                         padding: 20px;
+                         border: 1px solid #ccc;
+                         border-radius: 5px;
+                         transition: opacity 0.3s ease;
+                        }
+
+                        .hidden {
+                         opacity: 0;
+                        }
+
+                        #contactForm h2 {
+                         margin-bottom: 20px;
+                        }
+
+                        #contactForm label {
+                         display: block;
+                         margin-bottom: 10px;
+                        }
+
+                        #contactForm input[type="text"],
+                        #contactForm input[type="email"],
+                        #contactForm textarea {
+                         width: 100%;
+                         padding: 10px;
+                         margin-bottom: 20px;
+                         border: 1px solid #ccc;
+                         border-radius: 5px;
+                        }
+
+                        #contactForm input[type="submit"] {
+                         background-color: #333;
+                         color: #fff;
+                         padding: 10px 20px;
+                         border: none;
+                         cursor: pointer;
+                         border-radius: 5px;
+                        }
+                        .notification-form {
+                         background-color: #f9f9f9;
+                         padding: 20px;
+                         border: 1px solid #ccc;
+                         border-radius: 5px;
+                         max-width: 400px;
+                         margin: 0 auto;
+                         text-align: center;
+                        }
+
+                        .notification-form h2 {
+                         margin-bottom: 20px;
+                         color: #333;
+                        }
+
+                        .notification-form p {
+                         margin-bottom: 20px;
+                         color: #666;
+                        }
+
+                        .notification-form input[type="email"],
+                        .notification-form input[type="submit"] {
+                         width: 100%;
+                         padding: 10px;
+                         margin-bottom: 20px;
+                         border: 1px solid #ccc;
+                         border-radius: 5px;
+                        }
+
+                        .notification-form input[type="submit"] {
+                         background-color: #333;
+                         color: #fff;
+                         cursor: pointer;
+                        }
+
+                        .notification-form input[type="submit"]:hover {
+                         background-color: #555;
+                        }
+
+                        .notification-form input[type="checkbox"] {
+                         margin-right: 10px;
+                        }
+                        #clock {
+                         font-size: 48px;
+                         color: #333;
+                         text-align: center;
+                         padding: 20px;
+                         border: 1px solid #ccc;
+                         border-radius: 5px;
+                         box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+                         background-color: #fff;
+                         transition: background-color 0.3s ease;
+                        }
+
+                        #clock:hover {
+                         background-color: #e0e0e0;
+                        }
+
+                          .discord-link {
+                            background-color: #7289da;
+                            transition: background-color 0.3s ease;
+                          }
+                          .discord-link:hover {
+                            background-color: #677bc4;
+                          }
+                        #loadingScreen {
+                          position: fixed;
+                          top: 50%;
+                          left: 50%;
+                          transform: translate(-50%, -50%);
+                        }
+                        .hidden {
+                         display: none;
+                        }
+
+                        .popup-content {
+                         position: fixed;
+                         top: 50%;
+                         left: 50%;
+                         transform: translate(-50%, -50%);
+                         background-color: white;
+                         padding: 20px;
+                         border: 1px solid black;
+                         border-radius: 10px;
+                         text-align: center;
+                         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                        }
+
+                        button {
+                         background-color: blue;
+                         color: white;
+                         padding: 10px 20px;
+                         border: none;
+                         border-radius: 5px;
+                         cursor: pointer;
+                        }
+
+                        button:hover {
+                         background-color: darkblue;
+                        }
+                          #notification {
+                            position: fixed;
+                            top: 0;
+                            left: 50%;
+                            transform: translateX(-50%);
+                          }
+
+
+                          /* Other styles */
+                        }
+                        /* Toggle classes based on checked state */
+                        #mobile-toggle:checked ~ .container {
+                          @apply grid-cols-1 gap-4; 
+                        }
+                        #mobile-toggle:not(:checked) ~ .container {
+                          @apply grid-cols-3 gap-8;
+                        }
+
+
+
+
+
+
+
+                      </style>
+                                   
+                                    
+
+                      <script>
+                      $("#change-ui").click(function() {
+                        $(".editor").toggleClass("editor-alternative");
+                        $(".editor-window").toggleClass("editor-window-alternative");
+                        $(".nav-li").toggleClass("nav-li-alternative");
+                        $(".nav-green").toggleClass("nav-light-alternative");
+                        $(".nav-pink").toggleClass("nav-light-alternative");
+                        $(".nav-yellow").toggleClass("nav-light-alternative");
+                      });
+
+                      $("#mobile-nav").click(function() {
+                        $(".nav").toggleClass("nav-alternative");
+                      });
+
+                      </script>
+
+
+                                </script>
+
+                                <script>
+                                  window.onload = function() {
+                                     var errorPage = document.querySelector('.index.html');
+                                     if (errorPage) {
+                                       history.pushState({}, "", "/home");
+                                     }
+                                   };
+                                </script>
+
+                                <script>
+                                  function showAlert(message, type) {
+                                   var alertDiv = document.createElement('div');
+                                   alertDiv.className = 'alert ' + type;
+                                   alertDiv.innerHTML = message + '<span class="closebtn">&times;</span>';
+
+                                   var container = document.getElementById('alert-container');
+                                   container.appendChild(alertDiv);
+
+                                   var closeBtn = alertDiv.querySelector('.closebtn');
+                                   closeBtn.onclick = function() {
+                                     alertDiv.style.opacity = "0";
+                                     setTimeout(function() {
+                                       container.removeChild(alertDiv);
+                                     }, 600);
+                                   }
+                                  }
+                                  showAler('Updates are rolling out', 'info');
+
+
+
+                                </script>
+
+                        <script>
+                          document.getElementById('contactButton').addEventListener('click', function() {
+                           var contactForm = document.getElementById('contactForm');
+                           contactForm.style.display = contactForm.style.display === 'none' ? 'block' : 'none';
+                          });
+
+
+                        </script>
+
+                      <script>
+                        document.querySelector('.notification-form').addEventListener('submit', function(event) {
+                         event.preventDefault();
+                         alert('Thank you for opting in to receive notifications!');
+                        });
+
+
+                      </script>
+
+                                <script>
+                                  function changeTheme(theme) {
+                                    if (theme === 'light') {
+                                      document.body.classList.remove('dark');
+                                      document.body.classList.remove('neon');
+                                    } else if (theme === 'dark') {
+                                      document.body.classList.remove('neon');
+                                      document.body.classList.add('dark');
+                                    } else if (theme === 'neon') {
+                                      document.body.classList.remove('dark');
+                                      document.body.classList.add('neon');
+                                    }
+                                  }
+                                </script>
+
+                                <script>
+                                  document.addEventListener("DOMContentLoaded", function() {
+                                    var loadingScreen = document.getElementById("loadingScreen");
+
+                                    document.querySelectorAll("a").forEach(function(link) {
+                                      link.addEventListener("click", function(event) {
+                                        event.preventDefault();
+                                        var url = this.getAttribute("href");
+                                        loadingScreen.classList.remove("hidden");
+
+                                        setTimeout(function() {
+                                          window.location.href = url;
+                                        }, 3000); 
+                                      });
+                                    });
+
+                                    window.addEventListener("load", function() {
+                                      loadingScreen.classList.add("hidden");
+                                    });
+                                  });
+                                </script>
+
+                            <script>
+                              function changeTheme(theme) {
+                                const body = document.querySelector('body');
+                                body.classList.remove('bg-gray-100');
+                                switch (theme) {
+                                  case 'light':
+                                    body.classList.add('bg-gray-100');
+                                    break;
+                                  case 'dark':
+                                    body.classList.add('bg-gray-900');
+                                    break;
+                                  case 'neon':
+                                    body.classList.add('bg-purple-600');
+                                    break;
+                                  default:
+                                    body.classList.add('bg-gray-100');
+                                }
+                              }
+                            </script>
+
+                                    <script>
+
+                                    document.addEventListener('DOMContentLoaded', function() {
+                                     const popup = document.getElementById('devPopup');
+                                     const closeButton = document.getElementById('closePopup');
+                                     const passwordInput = document.getElementById('passwordInput');
+
+                                     const correctPassword = 'secretpassword';
+
+                                     function showPopup() {
+                                        popup.classList.remove('hidden');
+                                     }
+
+                                     function closePopup() {
+                                        popup.classList.add('hidden');
+                                     }
+
+                                     function checkPassword() {
+                                        if (passwordInput.value === correctPassword) {
+                                           closePopup();
+                                        } else {
+                                           alert('Incorrect password. Please try again.');
+                                        }
+                                     }
+
+                                     closeButton.addEventListener('click', closePopup);
+                                     passwordInput.addEventListener('keypress', function(event) {
+                                        if (event.key === 'Enter') {
+                                           checkPassword();
+                                        }
+                                     });
+
+                                     showPopup();
+                                    });                              </script>
+
+
+                                    <script> document.addEventListener('DOMContentLoaded', () => { const hamburger = document.querySelector('.inline-flex'); const menu = document.querySelector('.hidden'); hamburger.addEventListener('click', () => { menu.classList.toggle('sm:hidden'); }); }); </script>
+
+                                    <script>
+                                    const notification = document.getElementById('notification');
+                                    const close = document.getElementById('close');
+
+                                    // Show popup for 5 seconds
+                                    setTimeout(() => {
+                                      notification.classList.add('top-0', 'opacity-100');
+                                    }, 1000); 
+
+                                    // Close popup
+                                    close.addEventListener('click', () => {
+                                      notification.classList.remove('top-0', 'opacity-100'); 
+                                    });
+                                    </script>
+
+                                   <script> // Get popup and close button elements
+                                     // Get popup and close button
+                                     const popup = document.querySelector('.popup'); 
+                                     const closeBtn = popup.querySelector('.close-btn');
+
+                                     // Close popup when click close button
+                                     closeBtn.addEventListener('click', () => {
+                                       popup.style.display = 'none';
+                                     });
+
+                                  </script>
+
+                                    <script>
+                                    const toggle = document.querySelector('#mobile-toggle');
+
+                                    // Update layout on toggle change  
+                                    toggle.addEventListener('change', () => {
+                                      document.body.classList.toggle('mobile-view'); 
+                                    });
+                                    </script>
+
+
+                                   
+
+                                    
+
