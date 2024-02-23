@@ -1,0 +1,191 @@
+.navigation-links-nav {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+  .navigation-links-text {
+    color: #ffffff;
+  }
+  .navigation-links-text1 {
+    color: #ffffff;
+    margin-left: var(--dl-space-space-twounits);
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  @media(max-width: 767px) {
+    .navigation-links-nav {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    .navigation-links-text {
+      margin-bottom: var(--dl-space-space-unit);
+    }
+    .navigation-links-text1 {
+      margin-left: 0;
+      margin-bottom: var(--dl-space-space-unit);
+    }
+  }
+  
+  .prompts-container {
+    width: 100%;
+    display: flex;
+    overflow: auto;
+    min-height: 100vh;
+    align-items: center;
+    flex-direction: column;
+    background-color: 	#292b2f;
+  }
+  .prompts-header {
+    width: 100%;
+    display: flex;
+    position: relative;
+    max-width: var(--dl-size-size-maxwidth);
+    align-items: center;
+    padding-top: var(--dl-space-space-twounits);
+    border-color: rgba(0, 0, 0, 0);
+    border-width: 1px;
+    padding-left: var(--dl-space-space-threeunits);
+    padding-right: var(--dl-space-space-threeunits);
+    padding-bottom: var(--dl-space-space-twounits);
+    justify-content: space-between;
+    background-color: #2f3136;
+  }
+  .prompts-container1 {
+    flex: 0 0 auto;
+    width: auto;
+    height: auto;
+    display: flex;
+    position: relative;
+    align-items: space-between;
+    flex-direction: column;
+  }
+  .prompts-text {
+    top: -28px;
+    left: -32px;
+    color: var(--dl-color-gray-white);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+  }
+  .prompts-date-time {
+    color: #ffffff;
+    align-self: flex-end;
+    text-align: justify;
+  }
+  .prompts-date-time1 {
+    top: 32px;
+    left: 591px;
+    color: #ffffff;
+    position: absolute;
+    align-self: flex-end;
+    text-align: right;
+  }
+  .prompts-nav {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+  .prompts-burger-menu {
+    display: none;
+  }
+  .prompts-icon {
+    width: var(--dl-size-size-xsmall);
+    height: var(--dl-size-size-xsmall);
+    display: flex;
+  }
+  .prompts-mobile-menu {
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100vh;
+    display: none;
+    padding: 32px;
+    z-index: 100;
+    position: absolute;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+  }
+  .prompts-nav1 {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .prompts-container2 {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--dl-space-space-threeunits);
+    justify-content: space-between;
+  }
+  .prompts-image {
+    height: 2rem;
+  }
+  .prompts-close-mobile-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .prompts-icon02 {
+    width: var(--dl-size-size-xsmall);
+    height: var(--dl-size-size-xsmall);
+  }
+  .prompts-icon04 {
+    width: var(--dl-size-size-xsmall);
+    height: var(--dl-size-size-xsmall);
+    margin-right: var(--dl-space-space-twounits);
+  }
+  .prompts-icon06 {
+    width: var(--dl-size-size-xsmall);
+    height: var(--dl-size-size-xsmall);
+    margin-right: var(--dl-space-space-twounits);
+  }
+  .prompts-icon08 {
+    width: var(--dl-size-size-xsmall);
+    height: var(--dl-size-size-xsmall);
+  }
+  .prompts-container3 {
+    width: 1110px;
+  }
+  .prompts-container4 {
+    display: contents;
+  }
+  @media(max-width: 767px) {
+    .prompts-header {
+      padding-left: var(--dl-space-space-twounits);
+      padding-right: var(--dl-space-space-twounits);
+    }
+    .prompts-nav {
+      display: none;
+    }
+    .prompts-burger-menu {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  @media(max-width: 479px) {
+    .prompts-header {
+      padding: var(--dl-space-space-unit);
+    }
+    .prompts-mobile-menu {
+      padding: 16px;
+    }
+  }
+  
